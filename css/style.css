@@ -1,0 +1,385 @@
+/* General */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    color: white;
+    background-color: #141414;
+}
+
+/* Header principal */
+.itbflix-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #141414;
+    position: sticky;
+    height: 70px;
+    z-index: 10;
+    top: 0;
+    padding: 0;
+}
+
+/* Estilo del logo */
+.itbflix-header .logo {
+    width: 200px;
+}
+
+/* Estilo del menú de navegación */
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0 20px 0 0;
+    padding: 0;
+}
+
+.nav-menu .pelis-nav, 
+.nav-menu .series-nav,
+.nav-menu .mas-visto-nav,
+.nav-menu .register {
+    font-size: 20px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    color: #e50914;
+}
+
+.nav-menu .register {
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #e50914;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.nav-menu .register:hover {
+    background-color: #b20710;
+}
+
+/* Main */
+main {
+    overflow-x: hidden;
+}
+
+/* Sección de películas */
+#Peliculas {
+    text-align: left;
+    margin: 0;
+    font-size: 2.0rem;
+    color: white;
+}
+
+.movie-container, 
+.series-container {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+
+.movie-card, 
+.serie-card {
+    position: relative;
+    height: 375px;
+    width: 250px;
+    flex: 0 0 250px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+
+.character {
+    position: absolute;
+    bottom: -100%;
+    margin-bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 90%;
+    width: auto;
+    max-width: 100%;
+    opacity: 0;
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+
+.movie-card a, 
+.serie-card a {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+.movie-title, 
+.serie-title {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    font-size: 1.2rem;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Efectos hover */
+.movie-card:hover, 
+.serie-card:hover {
+    transform: translateY(-5px);
+}
+
+.movie-card:hover .poster, 
+.serie-card:hover .poster {
+    transform: scale(1.1);
+    filter: brightness(0.7);
+}
+
+.movie-card:hover .character, 
+.serie-card:hover .character {
+    bottom: 0;
+    opacity: 1;
+}
+
+.movie-card:hover .movie-title, 
+.serie-card:hover .serie-title {
+    opacity: 1;
+}
+
+.movie-card::after, 
+.serie-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.movie-card:hover::after, 
+.serie-card:hover::after {
+    opacity: 1;
+}
+
+/* Sección de series */
+#Series {
+    text-align: left;
+    margin: 0;
+    font-size: 2.0rem;
+    color: white;
+}
+
+/* Contenedor de sección */
+section {
+    margin: 20px;
+    overflow-x: hidden;
+}
+
+section article {
+    margin-right: 20px;
+}
+
+/* Contenedor Principal */
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin: 2rem auto;
+    padding: 2rem;
+    width: 90%;
+}
+
+/* Sección de Actores */
+.actors-section {
+    width: 70%;
+}
+
+.actors-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: flex-start;
+}
+
+.actors-container article {
+    width: 200px;
+    background: #1f1f1f;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.actors-container article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.2);
+}
+
+.actors-container img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+}
+
+.actors-container h3 {
+    margin-top: 10px;
+    color: white;
+}
+
+.actors-container p {
+    color: #cccccc;
+    margin: 5px 0;
+}
+
+/* Sección de Festivales */
+.festivals-aside {
+    width: 25%;
+}
+
+.festivals-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.festivals-container article {
+    background: #1f1f1f;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.festivals-container article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.2);
+}
+
+.festivals-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+}
+
+.festivals-container h3 {
+    margin-bottom: 10px;
+    color: white;
+}
+
+.festivals-container p {
+    color: #cccccc;
+}
+
+/* Sección Lo más visto */
+.masvisto-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.masvisto-container article {
+    position: relative;
+    width: 250px;
+}
+
+.masvisto-container h3 {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    font-size: 2rem;
+    color: #e50914;
+}
+
+.masvisto-container figure {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.masvisto-container img {
+    width: 100%;
+    height: 375px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.masvisto-container article:hover img {
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background: #1f1f1f;
+    padding: 2rem;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+footer nav {
+    margin-bottom: 1.5rem;
+}
+
+footer nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+}
+
+footer nav a:hover {
+    color: #e50914;
+}
+
+footer address {
+    color: #cccccc;
+    margin-bottom: 1rem;
+}
+
+footer p {
+    color: #999;
+    margin: 0;
+}
+
+section::after {
+    content: "";
+    display: table;
+    clear: both;
+}
